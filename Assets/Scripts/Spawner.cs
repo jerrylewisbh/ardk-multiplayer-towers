@@ -13,9 +13,12 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //get a reference to the game manager
         gameManager = FindObjectOfType<GameManager>();
 
         Debug.Log("Start Board: " + gameManager.GetIsHost());
+       
+        //determine where the cubes will be spawned from
         if (gameManager.GetIsHost())
         {
             spawnPoint = GameObject.FindWithTag("Player1").transform;
@@ -31,6 +34,9 @@ public class Spawner : MonoBehaviour
     {
 
         Debug.Log("PlatformAgnosticInput.touchCount: " + PlatformAgnosticInput.touchCount);
+       
+        
+        //create a new cube on the touch position
         if (PlatformAgnosticInput.touchCount > 0)
         {
             Touch touch = PlatformAgnosticInput.GetTouch(0);
